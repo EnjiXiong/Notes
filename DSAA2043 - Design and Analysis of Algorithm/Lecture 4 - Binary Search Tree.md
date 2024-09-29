@@ -158,6 +158,7 @@ A null tree (no nodes) has height -1.
 
 Let $n(h)$ be the number of nodes if the height of the tree is $h$. For $h >= 2$, we have 
 
+$$
 \begin{aligned}
 n(h) & = n(h-1) + n(h-2) + 1 \\
      & > 2n(h-2) \\
@@ -165,6 +166,7 @@ n(h) & = n(h-1) + n(h-2) + 1 \\
      & > ... \\
      & > 2^{\frac{h}{2}} \\
 \end{aligned}
+$$
 
 Thus, we can conclude that $h < 2logn(h)$, so $h = \theta(log(n))$
 
