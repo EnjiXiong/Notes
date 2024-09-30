@@ -10,6 +10,7 @@
   - [insertion](#insertion)
 - [red black tree](#red-black-tree)
 - [Binary Heap](#binary-heap)
+- [Time Complexity Table](#time-complexity-table)
 
 ### binary-search-tree
 > before we learn it recall the knowledge of [array and linked list](../Code/1st_lecture.ipynb).
@@ -211,26 +212,135 @@ graph TD;
 | C | right rotation -> left rotation |
 | D | left rotation |
 
+***Example***
+
+Take the situation C as an example, it looks like this initially:
+
+```mermaid
+flowchart TB
+  node_1(("Original Root"))
+  node_2(("Original Left Sub-tree Height K"))
+  node_3(("X"))
+  node_4{"Left Height: k+1"}
+  node_5{"Right Height: k-1"}
+  node_1 --> node_2
+  node_1 --> node_3
+  node_3 --> node_4
+  node_3 --> node_5
+```
+
+The right sub-tree is out of balance, so we need to balance it first and then balance the whole tree.
+
+```mermaid
+flowchart TB
+  node_1(("ORoot"))
+  node_2(("OL"))
+  node_3(("X"))
+  node_4(("Y"))
+  node_5{"Left Left Height k"}
+  node_6{"Left Right Height k"}
+  node_7(("Right Height k-1"))
+  node_1 --> node_2
+  node_1 --> node_3
+  node_3 --> node_4
+  node_3 --> node_7
+  node_4 --> node_5
+  node_4 --> node_6
+```
+
+And then right rotate the right sub-tree since it's left heavier.
+
+```mermaid
+flowchart TB
+  node_1(("ORoot"))
+  node_2(("OL"))
+  node_3(("Y"))
+  node_4{"Left Left Height k"}
+  node_5(("X"))
+  node_6{"Left Right Height k"}
+  node_7(("Right Height k-1"))
+  node_1 --> node_2
+  node_1 --> node_3
+  node_3 --> node_4
+  node_3 --> node_5
+  node_5 --> node_6
+  node_5 --> node_7
+```
+
+In this stage, the right sub-tree is balanced. We just need to left rotate the whole tree to get all balanced.
+
+```mermaid
+flowchart TB
+  node_1(("Y"))
+  node_2(("ORoot"))
+  node_3(("OL"))
+  node_4(("Left Left Height K"))
+  node_5(("X"))
+  node_6(("Left Right Height k"))
+  node_7(("Right Height K-1"))
+  node_1 --> node_2
+  node_2 --> node_3
+  node_2 --> node_4
+  node_1 --> node_5
+  node_5 --> node_6
+  node_5 --> node_7
+```
+
+Finally, we make it balanced again!
+
 ### red-black-tree
 
-AVT tree obtains strict constraint, could we relax it a bit?
+In the former example, I feel it difficult and complicated to rotate and return the balanced tree. There's a strict constraint of the AVL Tree, could we relax it a bit?
 
 Now, red black tree is introduced: 
 
 - Every node is colored red or black.
-- The root node is a black node.
-- NIL children count as black nodes.
-- Children of a red node are black nodes.
+- The **root** node is a **black** node.
+- **NIL** children count as **black** nodes.
+- Children of a red node are black nodes. **(A red node definitely has exactly 2 black nodes as children)**
 - For all nodes x:
-  - all paths from x to NIL’s have the same number of black nodes on them.
+  - **all paths** from x to NIL’s have the **same number of black nodes** on them.
 
 Comparison with AVL Tree:
+
 The AVL trees are more balanced compared to Red-Black Trees, but they may cause more rotations during insertion and deletion. So if your application involves frequent insertions and deletions, then Red-Black trees should be preferred. And if the insertions and deletions are less frequent and search is a more frequent operation, then AVL tree should be preferred over the Red-Black Tree.
 
-The problem is still how to totate it. [reference](https://www.geeksforgeeks.org/introduction-to-red-black-tree/)
+The problem is still how to rotate it, because a new method to keep the balance is introduced -- re-color. [reference](https://www.geeksforgeeks.org/introduction-to-red-black-tree/)
+
+*General Method:*
+
+1. make the inserted value a new red node.
+2. attempt to just change the color.
+3. rotate the tree.
+4. adjust the color.
 
 ### binary-heap
 
-Binary heap is a binary tree but not a binary search tree. Child nodes are all larger or smaller than the former node. However, it's still complete, which means every node has either 2 or 0 sub-trees.
+Binary heap is a binary tree but not a binary search tree. Child nodes are all larger or smaller than the former node. However, it's still complete, which means nodes are filled from the left to the right and from the root to the leaves. Like this:
+
+```mermaid
+graph TD;
+  1 --> 2
+  1 --> 3
+  2 --> 5
+  2 --> 7
+  3 --> 6
+  3 --> 11
+  5 --> 13
+  5 --> 32
+  7 --> 23
+```
+
+We usually use Binary Heap to do these three operation: FindMin, DeleteMin, Insert. Just refer to the below link: 
 
 [Binary Heap](https://www.geeksforgeeks.org/binary-heap/)
+
+## Time Complexity Table
+
+| | BST | AVL Tree | Red Black Tree | Binary Heap | Linked List | Array |
+|-|-----|----------|----------------|-------------|-------------|-------|
+| Search |
+| FindMin |
+| Delete |
+| DeleteMin |
+| Insert |
