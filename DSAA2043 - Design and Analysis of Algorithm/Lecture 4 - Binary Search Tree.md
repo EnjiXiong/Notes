@@ -335,12 +335,21 @@ We usually use Binary Heap to do these three operation: FindMin, DeleteMin, Inse
 
 [Binary Heap](https://www.geeksforgeeks.org/binary-heap/)
 
+Building the heap is $O(N)$.
+
+Merging two heaps can be $O(N)$ if we copy Heap2 at the end of the Heap1 and use BuildHeap function. If we add the element in Heap2 to the Heap1 one by one, the time complexity is $O(nlog(n))$
+
 ## Time Complexity Table
 
-| | BST | AVL Tree | Red Black Tree | Binary Heap | Linked List | Array |
+| | BST[^2] | AVL Tree | Red Black Tree | Binary Heap | Linked List | Array |
 |-|-----|----------|----------------|-------------|-------------|-------|
-| Search |
-| FindMin |
-| Delete |
-| DeleteMin |
-| Insert |
+| Search | $O(log(n))$ | $O(log(n))$ | $O(log(n))$ | $O(N)$ | $O(N)$ | $O(N)$[^1] |
+| FindMin | $O(log(n))$ | $O(log(n))$ | $O(log(n))$ | $O(1)$ | $O(N)$[^3] | $O(N)$ |
+| Delete | $O(log(n))$ | $O(log(n))$ | $O(log(n))$ | $O(log(n))$ | $O(N)$ | $O(N)$ |
+| DeleteMin | $O(log(n))$ | $O(log(n))$ | $O(log(n))$ | $O(log(n))$ | $O(N)$ | $O(N)$ |
+| Insert | $O(log(n))$ | $O(log(n))$ | $O(log(n))$ | $O(log(n))$ | $O(1)$[^4] | $O(1)$ |
+
+[^1]: O(log(n)) if the array is sorted.
+[^2]: If it's extremely unbalanced, the time complexity will be O(n).
+[^3]: If the list is sorted, it's O(1).
+[^4]: If the list is sorted, it's O(n).
