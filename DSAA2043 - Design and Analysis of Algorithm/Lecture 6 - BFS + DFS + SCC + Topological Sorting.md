@@ -3,13 +3,13 @@
 - menu
   - [Basis: What is graph data structure?](#Fundamental-Knowledge)
     - [Professional Expressions](#Terminology)
-    - [Representation](#How_to_store_a_graph)
+    - [Representation](#How-to-store-a-graph)
   - [BFS](#BFS)
   - [DFS](#DFS)
-    - [Code](#Stack-based_algorihtm)
+    - [Code](#Stack_based-algorihtm)
   - [SCC](#SCC)
-    - [Twice BFS and Tarjan's Algorithm](#How_to_check_the_connectivity?)
-  - [Topological sorting](#Topological_Sorting)
+    - [Twice BFS and Tarjan's Algorithm](#How-to-check-the-connectivity?)
+  - [Topological sorting](#Topological-Sorting)
   - [External Link](#Referrence)
 
 ### Fundamental Knowledge
