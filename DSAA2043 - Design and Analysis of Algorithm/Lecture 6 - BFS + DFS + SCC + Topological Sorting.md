@@ -8,7 +8,7 @@
   - [DFS](#DFS)
     - [Code](#Stack-based_algorihtm)
   - [SCC](#SCC)
-    -[Tarjan's Algorithm](#How_to_check_the_connectivity?)
+    - [Twice BFS and Tarjan's Algorithm](#How_to_check_the_connectivity?)
   - [Topological sorting](#Topological_Sorting)
   - [External Link](#Referrence)
 
@@ -93,7 +93,7 @@ void add_edge(int a, int b, int value){
 
 ```C++
 //邻接矩阵建边
-//同样的，不熟悉python，先建C++，python的课后补
+//同样的，不熟悉python，先建C++，python的课后补 // 已补
 int graph[maxn][maxn] = {0};
 
 //If we just want to store the node a and b are connected, take the value = 1 after initializing the matrix with all 0.
@@ -128,7 +128,49 @@ class Graph:
 Definition: starts traversing the graph from root node and explores all the neighbours. Then, it selects the nearest node and explore all the unexplored nodes.
 
 ```python
-#课后补
+class Graph:
+    def __init__(self):
+        self.graph = {} #adjacency list
+        self.visited = set()
+    
+    def add_edge(self, node, neighbor):
+        if node in self.graph:
+            self.graph[node].append(neighbor)
+        else:
+            self.graph[node] = [neighbor]
+
+        if neighbor in self.graph:
+            self.graph[neighbor].append(node)
+        else:
+            self.graph[neighbor] = [node]
+
+    def BFS_iterative(self, start): 
+        """TODO"""
+        queue = []
+        queue.append(start)
+        while queue:
+            front = queue.pop(0)
+            if front not in self.visited:
+                self.visited.add(front)
+                print(front, end=' ')
+                queue.extend(self.graph[front])
+
+    def BFS_recursive(self, node):
+        """TODO"""
+        # An unnecessary method which increases the time complexity of the algorithm
+
+graph = Graph()
+graph.add_edge('A', 'B')
+graph.add_edge('A', 'C')
+graph.add_edge('A', 'D')
+graph.add_edge('A', 'E')
+graph.add_edge('B', 'F')
+graph.add_edge('F', 'H')
+graph.add_edge('GG', 'D')
+graph.add_edge('D', 'G')
+graph.add_edge('G', 'I')
+print("===BFS===")
+graph.BFS_iterative('A') #output: A B C D E F GG G H I
 ```
 
 ### DFS
@@ -153,7 +195,8 @@ class Graph:
             self.graph[node].append(neighbor)
         else:
             self.graph[node] = [neighbor]
-        
+
+        #The code below is for undirected edge. 
         if neighbor in self.graph:
             self.graph[neighbor].append(node)
         else:
@@ -221,8 +264,74 @@ Of course, twice BFS can address the problem.
 > 
 > – Correctness follows immediately from previous lemma
 
+##### Code
+Inherit from the BFS code above. Click [BFS](#BFS) to see the code.
+
+The graph here is a directed graph.
+
 ```python
-#python代码课后补
+class Graph:
+    def __init__(self):
+        self.graph = {}
+        self.reverse = {}
+        self.points = set()
+        self.visited = set()
+
+    def add_edge(self, node, neighbor):
+        self.points.add(node)
+        self.points.add(neighbor)
+
+        if node in self.graph:
+            self.graph[node].append(neighbor)
+        else:
+            self.graph[node] = [neighbor]
+
+        if neighbor in self.reverse:
+            self.reverse[neighbor].append(node)
+        else:
+            self.reverse[neighbor] = [node]
+
+    def BFS(self, start): 
+        queue = []
+        queue.append(start)
+        while queue:
+            front = queue.pop(0)
+            if front not in self.visited:
+                self.visited.add(front)
+                if front in self.graph:
+                    queue.extend(self.graph[front])
+
+    def BFS_reversed(self, start): 
+        queue = []
+        queue.append(start)
+        while queue:
+            front = queue.pop(0)
+            if front not in self.visited:
+                self.visited.add(front)
+                if front in self.reverse:
+                    queue.extend(self.reverse[front])
+
+    def SCC(self, start):
+        self.BFS(start)
+        self.BFS_reversed(start)
+        if self.points == self.visited:
+            return True
+        else:
+            return False
+        
+        
+graph = Graph()
+graph.add_edge('B', 'A')
+graph.add_edge('A', 'C')
+graph.add_edge('A', 'D')
+graph.add_edge('A', 'E')
+graph.add_edge('B', 'F')
+graph.add_edge('F', 'H')
+graph.add_edge('GG', 'D')
+graph.add_edge('D', 'G')
+graph.add_edge('G', 'I')
+print("===SCC===")
+print(graph.SCC('A')) #output: False
 ```
 
 ---
@@ -340,7 +449,44 @@ Important Lemma:
 3.  To find the topological order, it consumes $O(n + m)$
 
 ```python
-#拓扑排序算法，下课补
+class Graph:
+    def __init__(self):
+        self.graph = {}
+        self.visited = set()
+    
+    def add_edge(self, node, neighbor):
+        if node in self.graph:
+            self.graph[node].append(neighbor)
+        else:
+            self.graph[node] = [neighbor]
+
+
+    def Topological_Sorting(self):
+        stack = []
+
+        def dfs(node):
+            if node not in self.visited:
+                self.visited.add(node)
+                if node in self.graph:
+                    for neighbor in self.graph[node]:
+                        dfs(neighbor)
+                stack.append(node)
+
+        for node in self.graph:
+            dfs(node)
+
+        return stack[::-1]
+
+graph = Graph()
+graph.add_edge('F', 'A')
+graph.add_edge('E', 'A')
+graph.add_edge('F', 'C')
+graph.add_edge('C', 'D')
+graph.add_edge('D', 'B')
+graph.add_edge('E', 'B')
+print("===Topo===")
+l = graph.Topological_Sorting()
+print(l) #output: ['E', 'F', 'C', 'D', 'B', 'A']
 ```
 
 ### Referrence
