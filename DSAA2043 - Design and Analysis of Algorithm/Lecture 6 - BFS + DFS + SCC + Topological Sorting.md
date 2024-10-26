@@ -6,7 +6,7 @@
     - [Representation](#How-to-store-a-graph)
   - [BFS](#BFS)
   - [DFS](#DFS)
-    - [Code](#Stack-based-algorihtm)
+    - [Code](#Stack-based-Algorithm)
   - [SCC](#SCC)
     - [Twice BFS and Tarjan's Algorithm](#How-to-check-the-connectivity?)
   - [Topological sorting](#Topological-Sorting)
