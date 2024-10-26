@@ -8,7 +8,7 @@
   - [DFS](#DFS)
     - [Code](#Stack-based-Algorithm)
   - [SCC](#SCC)
-    - [Twice BFS and Tarjan's Algorithm](#How-to-check-the-connectivity?)
+    - [Twice BFS and Tarjan's Algorithm](#How-to-check)
   - [Topological sorting](#Topological-Sorting)
   - [External Link](#Referrence)
 
@@ -248,7 +248,7 @@ Connected Component: find all nodes reachable from s
 
 SCC(Strong connected component): A graph is strongly connected if every pair of nodes is mutually reachable
 
-#### How to check the connectivity?
+#### How to check
 
 > What we discuss in this subsection is a directed graph. Undirected graph is too easy to discuss.
 
