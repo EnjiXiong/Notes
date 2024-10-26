@@ -1,7 +1,7 @@
 # Lecture 6 - BFS + DFS + SCC + Topological Sorting
 
 - menu
-  - [Basis: What is graph data structure?](#Fundamental_Knowledge)
+  - [Basis: What is graph data structure?](#Fundamental-Knowledge)
     - [Professional Expressions](#Terminology)
     - [Representation](#How_to_store_a_graph)
   - [BFS](#BFS)
