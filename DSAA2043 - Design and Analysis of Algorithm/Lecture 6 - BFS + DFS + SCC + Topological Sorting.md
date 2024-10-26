@@ -178,7 +178,7 @@ graph.BFS_iterative('A') #output: A B C D E F GG G H I
 Definition: starts with the initial node, and then goes to deeper and deeper until we find the goal node or the node which has no children.
 > It's a backtrack algorithm(回溯算法), more convenient to use recursion.
 
-#### Stack-based Algorithm
+#### Stack based Algorithm
 
 1. Push the initial node
 2. Pop the top and push the neighbors of the popped
