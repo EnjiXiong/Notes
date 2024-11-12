@@ -26,7 +26,7 @@ Use $f_{in}(v_i)$ to denote the flow into the node $v_i$. Similarly, $f_{out}(v_
 
 Our algorithms are centered on the augmenting path.
 
-### Ford-Fulkerson Algorithm
+### Ford Fulkerson Algorithm
 
 Time complexity: $O(Cm)$ 
 
@@ -38,7 +38,7 @@ Time complexity: $O(Cm)$
 5. add the minimum capacity to the inverse of the directed edge
 6. repeat 1-5 until there's no augmenting path left.
 
-### Edmonds-Karp Algorithm
+### Edmonds Karp Algorithm
 
 Time complexity: $O(nm^2)$
 
