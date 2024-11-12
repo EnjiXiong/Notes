@@ -82,7 +82,7 @@ class Graph:
                         break
         return augmenting_path_exist
 
-    def Ford_Fulkerson(self, source, sink):
+    def Edmonds_Karp(self, source, sink):
         max_flow = 0
         parent = {} #用来记录某个点的上一个点有哪些
 
