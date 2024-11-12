@@ -2,8 +2,8 @@
 
 ## Menu
 - [Introduction](#Introduction)
-- [Ford-Fulkerson Algorithm](#Ford-Fulkerson_Algorithm)
-- [Edmonds-Karp Algorithm ](#Edmonds-Karp_Algorithm)
+- [Ford-Fulkerson Algorithm](#Ford_Fulkerson_Algorithm)
+- [Edmonds-Karp Algorithm ](#Edmonds_Karp_Algorithm)
 - [Reference](#Reference)
 
 ### Introduction
