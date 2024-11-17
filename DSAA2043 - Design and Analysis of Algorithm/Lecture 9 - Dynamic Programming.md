@@ -2,10 +2,10 @@
 
 ## Menu
 - [Introduction](#Introduction)
-- [Typical Probelms](#Typical_Problems)
+- [Typical Probelms](#Typical)
   - [Fibonacci numbers](#Fibonacci)
-  - [Knapsack Problem](#0/1Knapsack)
-  - [Matrix Chain Products](#Matrix_Chain_Products)
+  - [Knapsack Problem](#01Knapsack)
+  - [Matrix Chain Products](#MatrixChainProducts)
 - [Optional Problems](#Optional)
   - [Longest Common Sequence](#LCS)
 
@@ -26,7 +26,7 @@
 
 多说无益，直接做题！
 
-### Typical Problems
+### Typical
 
 #### Fibonacci
 
@@ -45,7 +45,7 @@ See, this is a simple but comprehensive procedure of the dynamic programming. Re
 
 [Return to the menu](#Menu)
 
-#### 0/1Knapsack
+#### 01Knapsack
 
 > A knapsack with $W$ weight constraint, there're several items with weight $w_i$ and value $v_i$.
 > Each item can be chosen at most once, and $W \ge \underset {chosen}{\sum} w_i$
@@ -100,7 +100,7 @@ class knapsack:
 
 [Return to the menu](#Menu)
 
-#### Matrix Chain Products
+#### MatrixChainProducts
 
 > Given the dimension of a sequence of matrices in an array arr[], where the dimension of the ith matrix is (arr[i-1] * arr[i]),
 > the task is to find the most efficient way to multiply these matrices together such that the total number of element multiplications is minimum.
