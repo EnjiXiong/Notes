@@ -87,7 +87,7 @@ class knapsack:
         l = self.length
         w = self.weight
         v = self.value
-        f = [0 for i in range of (c+1)] #初始化滚动数组，记录每个容量下的最大价值。例如，f[5] = 3表示容量为5时，最大价值为3.
+        f = [0 for i in range (c+1)] #初始化滚动数组，记录每个容量下的最大价值。例如，f[5] = 3表示容量为5时，最大价值为3.
         for i in range(l):
             for j in range(c,w[i]-1,-1):# C++中写作for(int j = W; j >= w[i]; j--)
                 f[j] = max(f[j], f[j-w[i]] + v[i])
