@@ -282,6 +282,31 @@ def LIS(root):
 
 $$f[u] = max(f[u], f[u-i] + i)$$
 
+```python
+class BP:
+    def __init__(self, n, k):
+        self.n = n
+        self.k = k
+
+    def goal(self):
+        sum = 0
+        for i in range(self.n):
+            sum += self.k[i]
+        return sum//2
+        
+    
+    #动态规划
+    def solve(self, goal(n,k)):
+        k = self.k
+        n = self.n
+        f = [0 for i in range(n+1)]
+        f[0] = 0
+        for i in range(n):
+            for j in range(goal,k[i],-1):
+                f[j] = max(f[j], f[j-k[i]]+k[i])
+        return f[goal]
+```
+
 
 ### Optional
 
