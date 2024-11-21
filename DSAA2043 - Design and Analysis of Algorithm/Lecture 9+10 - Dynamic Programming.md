@@ -6,8 +6,11 @@
   - [Fibonacci numbers](#Fibonacci)
   - [Knapsack Problem](#01Knapsack)
   - [Matrix Chain Products](#MatrixChainProducts)
-- [Optional Problems](#Optional)
   - [Longest Common Sequence](#LCS)
+  - [Independent Set](#IndependentSet)
+  - [Balanced Partioned](#BalancedPartioned)
+- [Optional Problems](#Optional)
+  
 
 ### Introduction
 
@@ -163,15 +166,128 @@ answer 2: 18 (1*2*3 + 1*3*4, 先算前两个矩阵，1*2和2*3的，记6次，�
 
 [Return to the menu](#Menu)
 
+#### LCS
+
+> Given two strings $s_1$ and $s_2$. We're going to figure out the length of the longest common string.
+> For example, $s_1$ = "ACDFG" and $s_2$ = "AGKDGM"
+> The output is 3 since the longest common string is "ADG"
+
+**Analysis:**
+1. use $s_1$ with the length m and $s_2$ with the length n to store the given strings. The function $f(i, j)$ to compute the answer of the first i indices in $s_1$ and j indices in $s_2$ ($i \leq m$ and $j \leq n$)
+2. The state transition equation is
+   
+$$
+  f(i,j) =
+   \begin{cases}
+     f(i-1,j-1) + 1,  & \text{if }s_1[i-1] \text{equals to} & s_2[j-1] \\
+     max(f(i-1,j),f(i,j-1)), & \text{if }s_1[i-1] \text{doesn't equal to} & s_2[j-1]
+   \end{cases}
+$$
+
+3. The corner case. $f(i,0) = 0$ and $f(0,j) = 0$
+4. Time complexity: we use 2-dimensional array to compute. Thus, the time complexity is obviously $O(mn)$
+
+```python
+class String:
+    def __init__(self, s1, s2):
+        self.s1 = s1
+        self.s2 = s2
+
+    def lcs(self):
+        l1 = len(self.s1)
+        l2 = len(self.s2)
+        s1 = self.s1
+        s2 = self.s2
+
+        def LCS(self, i, j):
+            if i == 0 or j == 0:
+                return 0
+            elif s1[i-1] == s2[j-1]:
+                return LCS(self, i-1, j-1) + 1
+            else:
+                return max(LCS(self,i,j-1), LCS(self,i-1,j))
+            
+        ans = LCS(self, l1, l2)
+        return ans
+```
+
+[Return to the menu](#Menu)
+
+#### IndependentSet
+
+> To simplify the problem, we discuss the tree.
+> Given a tree, find size of the Largest Independent Set(LIS) in it.
+> A subset of all tree nodes is an independent set if there is no edge between any two nodes of the subset.
+
+**Analysis:**
+1. Let f(u) become the maximum number(This property may be changed to maximum weight, maximum value or anything else, whatever, it doesn't look so distinctive.) of the independent set of the tree rooted in node u.
+2. Thre're two cases, the root is included in the set or it's not. Thus, we discuss.
+
+$$
+  f(u) = 
+    \begin{cases}
+      \sum_{grandsons}LIS + 1 & , \text{ if u is in the Independent Set} \\
+      \sum_{sons}LIS & , \text{ if u is not in the Independent Set}
+    \end{cases}
+$$
+
+3. However, sons and grandsons cannot be easily stored in the same array. So, we're required to come up with a structure in the isomorphism between sons and grandsons.
+4. We define 2 global variables A[u] and B[u]. Let $A[u]$ be the weight of a maximal independent set in the tree rooted at u. Let $B[u] = \sum_{𝑣∈𝑢.children} 𝐴[𝑣]$
+
+```python
+class Binary_Tree :
+    def __init__(self):
+        self.data = 0
+        self.left = self.right = None
+
+# A utility function to create a node 
+def newNode( data ) :
+ 
+    temp = Binary_Tree()
+    temp.data = data 
+    temp.left = temp.right = None
+    return temp  
+
+def LIS(root): 
+ 
+    if (root == None) :
+        return 0
+ 
+    # Calculate size excluding the current node 
+    size_excl = LIS(root.left) + LIS(root.right) 
+ 
+    # Calculate size including the current node 
+    size_incl = 1
+    if (root.left != None): 
+        size_incl += LIS(root.left.left) + LIS(root.left.right) 
+    if (root.right != None): 
+        size_incl += LIS(root.right.left) + LIS(root.right.right) 
+ 
+    # Return the maximum of two sizes 
+    return max(size_incl, size_excl) 
+```
+
+[Return to the menu](#Menu)
+
+#### BalancedPartioned
+
+> We are given 𝑛 integers 𝐼 = ${k_1, k_2, \dots , k_n}$, $0 \leq k_i \leq K$
+> We like to partition them into two sets $S_1$ and $S_2$ s.t. the difference $d$ of the total sizes of the two sets is as small as possible
+
+**Analysis:**
+1. We can set a goal first, to check if there's combination of that value. Optimally, $goal = \frac{\sum_{i \in elements}i}{2}$
+2. Let f[u] become the maximum sum of the elements if the goal is u.
+3. The sum is divided automatically in f[goal]
+4. The state transition equation is
+
+$$f[u] = max(f[u], f[u-i] + i)$$
+
+
 ### Optional
 
 PPT里面出现了名称的问题，但是没有给予讲解
 
 以及一些DP问题的拓展，比如背包（knapsack）问题不只有0/1背包，还有完全背包，多重背包，多维背包问题等
-
-[Return to the menu](#Menu)
-
-#### LCS
 
 下周再补上，还有一周讲DP。
 
