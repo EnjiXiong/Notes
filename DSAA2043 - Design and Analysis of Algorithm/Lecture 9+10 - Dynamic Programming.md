@@ -118,11 +118,11 @@ $$A_0 \times A_1 \times A_2 \times \dots \times A_{n-1} = (A_0 \times A_1 \times
 
 Take $N_{0,k} = (A_0 \times A_1 \times \dots \times A_k)$ and $N_{k+1, n-1} = (A_{k+1} \times \dots \times A_{n-1})$, the dimensions of the two new matrices are arr[0] $\times$ arr[k+1] and arr[k+1] $\times$ arr[n].
 
-Thus, $N_{0.n-1} = \underset {0 \le k \le n-1}{\min} {N_{0,k} + N_{k+1,n-1} + arr[0] \times arr[k+1] \times arr[n]}$
+Thus, $N_{0.n-1} = \underset {0 \le k \le n-1}{\min} ({N_{0,k} + N_{k+1,n-1}) + arr[0] \times arr[k+1] \times arr[n]}$
 
 3. Then, we have the state transition equation:
 
-$$N_{i.j} = \underset {i \le k \le j}{\min} {N_{i,k} + N_{k+1,j} + arr[i] \times arr[k+1] \times arr[j+1]}$$
+$$N_{i.j} = \underset {i \le k \le j}{\min} {(N_{i,k} + N_{k+1,j}) + arr[i] \times arr[k+1] \times arr[j+1]}$$
 
 Code is as below: 
 
