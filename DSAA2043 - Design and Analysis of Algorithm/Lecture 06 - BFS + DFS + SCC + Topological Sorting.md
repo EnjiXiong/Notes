@@ -204,6 +204,9 @@ class Graph:
     
     def dfs_iterative(self, start):
         """TODO"""
+        '''
+        use stack (list-basis) to implement iterative DFS in style two (i.e, push all neighbours into the stack)  
+        '''
         stack = []
         stack.append(start)
         while stack:
@@ -212,6 +215,30 @@ class Graph:
                 print(t, end=' ')
                 self.visited.add(t)
                 stack.extend(reversed(self.graph[t]))
+        print()
+        self.visited.clear()
+
+    def dfs_iterative_two(self, start):
+        '''
+        use stack (list-basis) to implement iterative DFS in style two (i.e, push one neighbour into the stack)  
+        '''
+        stack = []
+        stack.append(start)
+        while stack:
+            t = stack[len(stack)-1]
+            if t not in self.visited:
+                print(t, end = ' ')
+                self.visited.add(t)
+            cnt = 0
+            for node in self.graph[t]:
+                if node not in self.visited:
+                    stack.append(node)
+                    break
+                else:
+                    cnt += 1
+                
+            if cnt == len(self.graph[t]):
+                stack.pop()
         print()
         self.visited.clear()
 
@@ -238,6 +265,7 @@ graph.add_edge('D', 'G')
 graph.add_edge('G', 'I')
 print('====DFS-Iterative====')
 graph.dfs_iterative('A') #output: A B F H C D G I E
+graph.dfs_iterative_two('A') #output: A B F H C D G I E
 print('====DFS-Recursion====')
 graph.dfs_recursive('A') #output: A B F H C D G I E
 ```
