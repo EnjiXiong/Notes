@@ -1,5 +1,10 @@
 # Lecture 8 - Network Flow
 
+***There's no coding assignments in this lecture.***
+---
+***Presumably, this lecture is node coding-required.***
+---
+
 ## Menu
 - [Introduction](#Introduction)
 - [Ford-Fulkerson Algorithm](#Ford_Fulkerson_Algorithm)
