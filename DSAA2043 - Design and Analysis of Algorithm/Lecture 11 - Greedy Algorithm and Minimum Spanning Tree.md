@@ -1,5 +1,10 @@
 # Lecture 11 - Greedy Algorithm and Minimum Spanning Tree
 
+***MST in this lecture is code-required***
+---
+***Greedy Algorithm concentrates on its proof***
+---
+
 ## Menu
 - [Greedy Algorithm](#GreedyAlgorithm)
   - [Definition](#Definition)
