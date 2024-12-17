@@ -1,6 +1,9 @@
 # Shortest Path
 
-##### menu
+***All algorithms in this lecture are code-required***
+***意思是考试可能要考代码***
+
+## menu
 - [Dijkstra](#Dijkstra)
 - [Bellman-Ford](#Bellman-Ford)
   - [Better in time: SPFA](#SPFA)
@@ -42,7 +45,7 @@ def Floyd_Warshall(self):
 
 </details>
 
-> OPtional Over
+> Optional Over
 
 ---
 
