@@ -1,5 +1,8 @@
 # Lecture 6 - BFS + DFS + SCC + Topological Sorting
 
+***All algorithms in this lecture are code-required***
+***意思是考试可能要考代码***
+
 - menu
   - [Basis: What is graph data structure?](#Fundamental-Knowledge)
     - [Professional Expressions](#Terminology)
