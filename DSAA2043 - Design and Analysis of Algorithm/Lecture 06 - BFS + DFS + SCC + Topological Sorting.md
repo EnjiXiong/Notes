@@ -3,7 +3,7 @@
 ***All algorithms in this lecture are code-required***
 ***意思是考试可能要考代码***
 
-- menu
+## menu
   - [Basis: What is graph data structure?](#Fundamental-Knowledge)
     - [Professional Expressions](#Terminology)
     - [Representation](#How-to-store-a-graph)
