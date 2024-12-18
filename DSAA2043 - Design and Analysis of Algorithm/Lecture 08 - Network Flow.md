@@ -2,7 +2,7 @@
 
 ***There's no coding assignments in this lecture.***
 ---
-***Presumably, this lecture is node coding-required.***
+***Presumably, this lecture is not coding-required.***
 ---
 
 ## Menu
