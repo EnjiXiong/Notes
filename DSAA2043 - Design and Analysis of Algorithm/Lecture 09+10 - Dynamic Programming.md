@@ -301,7 +301,7 @@ class BP:
         
     
     #动态规划
-    def solve(self, goal(n,k)):
+    def solve(self, self.goal()):
         k = self.k
         n = self.n
         f = [0 for i in range(n+1)]
