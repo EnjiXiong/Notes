@@ -1,6 +1,6 @@
 # Lecture 9 - Dynamic Programming
 
-> ***There's no coding assignments in this lecture. Presumably, this lecture is node coding-required.***
+> ***There's no coding assignments in this lecture. Presumably, this lecture is not coding-required.***
 ---
 ***However, it's suggested that we should identify and design the program with an in-depth understanding of the connection between the state transition equation and the code***
 ---
